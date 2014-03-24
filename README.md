@@ -5,7 +5,7 @@
 ## Why?
 
 I work with several teammates on a shared development web server. As we deploy our code, it is important that we
-can both write to directories others have created and can overwrite files that the others may have installed. The
+can write to directories others have created and can overwrite files that the others may have installed. The
 "mode" option of grunt-contrib-copy is insufficient for two main reasons:
    1. files and directories typically need different modes (see [enhancement #152](https://github.com/gruntjs/grunt-contrib-copy/issues/152))
    2. a `chmod` is attempted regardless of need. This fails on files that the current user doesn't own.

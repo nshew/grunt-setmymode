@@ -13,8 +13,6 @@ module.exports = function(grunt) {
 
     grunt.verbose.subhead(this.name);
     this.requiresConfig("setmymode.options.directory");
-    this.requiresConfig("setmymode.options.modeDirs");
-    this.requiresConfig("setmymode.options.modeFiles");
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
