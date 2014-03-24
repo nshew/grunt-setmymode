@@ -1,6 +1,17 @@
 # grunt-setmymode
 
-> finds all files and directories under a given directory, and fixes their permissions if owned by executing user
+> finds all files and directories under a given directory, and sets their permissions if owned by executing user
+
+## Why?
+
+I work with several teammates on a shared development web server. As we deploy our code, it is important that we
+can both write to directories others have created and can overwrite files that the others may have installed. The
+"mode" option of grunt-contrib-copy is insufficient for two main reasons:
+   1. files and directories typically need different modes (see [enhancement #152](https://github.com/gruntjs/grunt-contrib-copy/issues/152))
+   2. a `chmod` is attempted regardless of need. This fails on files that the current user doesn't own.
+
+This plugin addresses both issues. It allows you to specify a mode each for files and directories,
+and will only `chmod` on files the current user owns (the "my" in the plugin name).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
@@ -37,47 +48,49 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.directory
 Type: `String`
-Default value: `',  '`
+Default value: none
 
-A string value that is used to do something with whatever.
+All files and directories under, and including, `directory` will have the appropriate mode applied.
 
-#### options.punctuation
+#### options.modeDirs
 Type: `String`
-Default value: `'.'`
+Default value: `2771`
 
-A string value that is used to do something else with whatever else.
+the octal mode setting for directories
+
+#### options.modeDirs
+Type: `String`
+Default value: `0664`
+
+the octal mode setting for files
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  setmymode: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, the default options are used to set permissions on the `/var/www/myclient` web server directory.
 
 ```js
 grunt.initConfig({
   setmymode: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+      directory: "/var/www/myclient"
+    }
+  },
+});
+```
+
+#### Custom Options
+In this example, custom options are used to set permissions on the `/var/www/myclient` web server directory without the setgid bit.
+
+```js
+grunt.initConfig({
+  setmymode: {
+    options: {
+      directory: "/var/www/myclient"
+      modeDirs:  "0771"
+    }
   },
 });
 ```

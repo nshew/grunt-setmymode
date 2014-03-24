@@ -6,10 +6,10 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
+"use strict";
 
 module.exports = function(grunt) {
-  grunt.registerMultiTask('setmymode', 'finds all files and directories under a given directory, and sets their permissions if owned by executing user', function() {
+  grunt.registerMultiTask("setmymode", "finds all files and directories under a given directory, and sets their permissions if owned by executing user", function() {
 
     grunt.verbose.subhead(this.name);
     this.requiresConfig("setmymode.options.directory");
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       modeFiles: "0664"
     });
 
-    var fs         = require('fs'); // Node file system API;
+    var fs         = require("fs"); // Node file system API;
     var subdirs    = [];
     var uniqueDirs = [];
     var uniquePaths;
@@ -78,6 +78,7 @@ module.exports = function(grunt) {
        * Also create a list of subdirectories. Ownership
        * will be checked when the list is pared down.
        */
+	  // TODO: What if you own the dir, but no files in/under it?
       if (subdir !== undefined) {
         subdirs.push(subdir);
       }
