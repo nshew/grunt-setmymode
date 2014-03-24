@@ -1,7 +1,7 @@
 {
   "name": "grunt-setmymode",
   "description": "finds all files and directories under a given directory, and sets their permissions if owned by executing user",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/NShewmaker/grunt-setmymode",
   "author": {
     "name": "Nicholas Shewmaker",
