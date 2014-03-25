@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask("setmymode", "finds all files and directories under a given directory, and sets their permissions if owned by executing user", function() {
 
     grunt.verbose.subhead(this.name);
-    this.requiresConfig("setmymode.options.directory");
+    this.requiresConfig(this.options.directory);
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({

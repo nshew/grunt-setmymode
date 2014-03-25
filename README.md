@@ -77,7 +77,8 @@ grunt.initConfig({
   setmymode: {
     options: {
       directory: "/var/www/myclient"
-    }
+    },
+    main: {}
   },
 });
 ```
@@ -90,7 +91,9 @@ grunt.initConfig({
   setmymode: {
     options: {
       directory: "/var/www/myclient"
-      modeDirs:  "0771"
+    },
+    main: {
+      modeDirs: "0771"
     }
   },
 });
