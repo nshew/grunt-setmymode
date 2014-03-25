@@ -11,7 +11,8 @@ can write to directories others have created and can overwrite files that the ot
    2. a `chmod` is attempted regardless of need. This fails on files that the current user doesn't own.
 
 This plugin addresses both issues. It allows you to specify a mode each for files and directories,
-and will only `chmod` on files the current user owns (the "my" in the plugin name).
+and will only `chmod` on files the current user owns (the "my" in the plugin name), and only
+when the mode isn't already at the given setting.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.4`

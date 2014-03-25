@@ -110,7 +110,7 @@ module.exports = function(grunt) {
       }
     });
     // prepend the target directory
-    uniquePaths.unshift(options.directory);
+    uniqueDirs.unshift(options.directory);
     // rerun the unique operation
     uniqueDirs = uniqueDirs.filter(function (value, index, self) {
       return self.indexOf(value) === index;
