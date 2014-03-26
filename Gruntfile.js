@@ -31,8 +31,9 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     setmymode: {
 	    options: {
-		    directory: "/var/www/myclient/"
-	    }
+		    directory: "/var/www/client/"
+	    },
+        main: {}
     },
 
     // Unit tests.
