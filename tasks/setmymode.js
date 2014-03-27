@@ -12,15 +12,18 @@ module.exports = function(grunt) {
   grunt.registerMultiTask("setmymode", "finds all files and directories under a given directory, and sets their permissions if owned by executing user", function() {
 
     grunt.verbose.subhead(this.name);
-    this.requiresConfig(this.options.directory);
+	  grunt.log.writeln("options = " + this.options());
+
+//    this.requiresConfig(this.name + ".options.directory");
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       modeDirs:  "2771",
       modeFiles: "0664"
     });
+	  grunt.log.writeln("options.directory = " + options.directory);
 
-    // make sure directory has a trailing slash
+    // make sure directory has a trailing slash for proper glob
     if (options.directory.slice(-1) != "/") {
       options.directory += "/";
     }
@@ -38,6 +41,7 @@ module.exports = function(grunt) {
 
     // get all files and directories under target directory
     var contentsArray = glob.sync(options.directory + "**", { mark: true });
+	  grunt.log.writeln("contentsArray = " + grunt.log.wordlist(contentsArray));
 
     /**
      * This function converts the mode reported by stat to
