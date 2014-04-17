@@ -11,17 +11,21 @@
 module.exports = function(grunt) {
   grunt.registerMultiTask("setmymode", "finds all files and directories under a given directory, and sets their permissions if owned by executing user", function() {
 
-    grunt.verbose.subhead(this.name);
-	  grunt.log.writeln("options = " + this.options());
+//	  grunt.log.writeln("this", JSON.stringify(this, null, 2));
+//	  grunt.log.writeln("grunt.config", JSON.stringify(grunt.config(), null, 2));
+//	  grunt.log.writeln("grunt.config(this.name)", JSON.stringify(grunt.config(this.name), null, 2));
 
-//    this.requiresConfig(this.name + ".options.directory");
+//	  grunt.log.writeln("this.options() = ", JSON.stringify(this.options(), null, 2));
+//	  this.requiresConfig(this.name + ".options.directory");
+//	  this.requiresConfig(this.name + "." + this.target + ".options.directory");
 
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      modeDirs:  "2771",
-      modeFiles: "0664"
-    });
-	  grunt.log.writeln("options.directory = " + options.directory);
+	  // Merge task-specific and/or target-specific options with these defaults.
+	  var options = this.options({
+		  modeDirs:  "2771",
+		  modeFiles: "0664"
+	  });
+//	  grunt.log.writeln("options = ", options);
+//	  this.requiresConfig("options.directory");
 
     // make sure directory has a trailing slash for proper glob
     if (options.directory.slice(-1) != "/") {
@@ -41,7 +45,7 @@ module.exports = function(grunt) {
 
     // get all files and directories under target directory
     var contentsArray = glob.sync(options.directory + "**", { mark: true });
-	  grunt.log.writeln("contentsArray = " + grunt.log.wordlist(contentsArray));
+//	grunt.log.writeln("contentsArray = " + grunt.log.wordlist(contentsArray));
 
     /**
      * This function converts the mode reported by stat to
