@@ -44,8 +44,17 @@ module.exports = function(grunt) {
     var currentUID = process.getuid();
 
     // get all files and directories under target directory
+    // "mark" adds trailing slash to directories
     var contentsArray = glob.sync(options.directory + "**", { mark: true });
 //	grunt.log.writeln("contentsArray = " + grunt.log.wordlist(contentsArray));
+
+    // now, add any files to the array
+    if (   options.files !== undefined
+        && options.files instanceof Array
+        && options.files.length > 0
+    ) {
+      contentsArray = contentsArray.concat(options.files);
+    }
 
     /**
      * This function converts the mode reported by stat to

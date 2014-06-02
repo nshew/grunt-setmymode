@@ -55,6 +55,12 @@ Default value: none
 
 All files and directories under, and including, `directory` will have the appropriate mode applied.
 
+#### options.files
+Type: `Array`
+Default value: none
+
+Additional, individual files to which the given mode will be applied.
+
 #### options.modeDirs
 Type: `String`
 Default value: `2771`
@@ -94,6 +100,23 @@ grunt.initConfig({
     },
     main: {
       modeDirs: "0771"
+    }
+  },
+});
+```
+
+#### Additional Files
+In this example, custom options are used to set permissions on the `/var/www/myclient` web server directory without the setgid bit.
+
+```js
+grunt.initConfig({
+  setmymode: {
+    options: {
+      directory: "/var/www/myclient"
+    },
+    main: {
+      modeDirs: "0771"
+      files: [ "/var/www/favicon.ico" ]
     }
   },
 });
