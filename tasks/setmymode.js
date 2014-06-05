@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       if (statMode2Octal(stat.mode) !== mode) {
         try {
           fs.chmodSync(element, mode);
-          grunt.log.writeln(element + " set to mode " + mode);
+          grunt.verbose.writeln(element + " set to mode " + mode);
         } catch (error) {
           grunt.log.error("unable to set mode of " + element);
         }
