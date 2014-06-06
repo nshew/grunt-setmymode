@@ -76,15 +76,16 @@ module.exports = function(grunt) {
 
     var setMode = function (element, stat, mode)
     {
-      if (statMode2Octal(stat.mode) !== mode) {
+      var curMode = statMode2Octal(stat.mode);
+      if (curMode !== mode) {
         try {
           fs.chmodSync(element, mode);
-          grunt.verbose.writeln(element + " set to mode " + mode);
+          grunt.verbose.writeln(curMode + " -> " + mode + " " + element);
         } catch (error) {
           grunt.log.error("unable to set mode of " + element);
         }
       } else {
-        grunt.verbose.writeln(element + " already had mode " + mode);
+        grunt.verbose.writeln("        " + curMode + " " + element);
       }
     };
 
