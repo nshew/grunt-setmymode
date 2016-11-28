@@ -1,7 +1,7 @@
 {
   "name": "grunt-setmymode",
   "description": "finds all files and directories under a given directory, and sets their permissions if owned by executing user",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "homepage": "https://github.com/NShewmaker/grunt-setmymode",
   "author": {
     "name": "Nicholas Shewmaker",
@@ -21,23 +21,23 @@
     }
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 4.6.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "glob":  "~3.2.9",
-    "grunt": "~0.4.4"
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "glob":  "^7.1.1",
+    "grunt": "^1.0.0"
   },
   "dependencies": {
-    "glob": "~3.2.9"
+    "glob": "^7.1.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.4"
+    "grunt": "^1.0.0"
   },
   "keywords": [
     "gruntplugin"
